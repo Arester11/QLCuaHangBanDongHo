@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class login extends javax.swing.JFrame {
@@ -276,7 +277,7 @@ public class login extends javax.swing.JFrame {
         }
 
         TaiKhoanDTO tk = TaiKhoanDAO.getInstance().selectByUsername(usernameCheck);
-        
+
         if (tk == null) {
             JOptionPane.showMessageDialog(this, "Tài khoản của bạn không tồn tại trên hệ thống", "Cảnh báo!", JOptionPane.WARNING_MESSAGE);
             return;
@@ -294,9 +295,12 @@ public class login extends javax.swing.JFrame {
         this.dispose();
 
         switch (tk.getRoleId()) {
-            case 1 -> new admin(tk).setVisible(true);
-            case 2 -> new nvnhaphang(tk).setVisible(true);
-            case 3 -> new nvxuathang(tk).setVisible(true);
+            case 1 ->
+                new admin(tk).setVisible(true);
+            case 2 ->
+                new nvnhaphang(tk).setVisible(true);
+            case 3 ->
+                new nvxuathang(tk).setVisible(true);
         }
     }
 
@@ -327,7 +331,12 @@ public class login extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+//        try {
+//            // Thiết lập giao diện theo hệ điều hành
+//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+//            e.printStackTrace();
+//        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new login().setVisible(true);

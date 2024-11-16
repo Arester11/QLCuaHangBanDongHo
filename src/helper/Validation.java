@@ -32,7 +32,7 @@ public class Validation {
             return "Giữa họ và tên không được chứa nhiều hơn 1 khoảng trắng!";
         }
 
-        if (fullName.startsWith("") || fullName.endsWith("")) {
+        if (fullName.startsWith(" ") || fullName.endsWith(" ")) {
             return "Họ và tên không được bắt đầu hoặc kết thúc bằng khoảng trắng!";
         }
 
@@ -119,10 +119,7 @@ public class Validation {
         if (!phoneNumber.matches("\\d+")) {
             return "Số điện thoại chỉ được chứa các chữ số!";
         }
-        if (phoneNumber.length() != 10) {
-            return "Số điện thoại hợp lệ là 10 chữ số!";
-        }
-        if (!phoneNumber.matches("0[0-9][1-9]{8}$")) {
+        if (phoneNumber.matches("0[0-9][1-9]{8}$")) {
             return "Số điện thoại không hợp lệ! Số điện thoại phải bắt đầu bằng 0, theo sau là một chữ số từ 1 đến 9 và sau đó là 8 chữ số bất kỳ.";
         }
         return null;

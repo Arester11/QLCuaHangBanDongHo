@@ -6,8 +6,17 @@ public class ChiTietPhieuXuatDTO {
     private int masp;
     private int soluong;
     private double dongia;
+    private int thoigianbaohanh;
 
     public ChiTietPhieuXuatDTO() {
+    }
+
+    public ChiTietPhieuXuatDTO(int maphieuxuat, int masp, int soluong, double dongia, int thoigianbaohanh) {
+        this.maphieuxuat = maphieuxuat;
+        this.masp = masp;
+        this.soluong = soluong;
+        this.dongia = dongia;
+        this.thoigianbaohanh = thoigianbaohanh;
     }
 
     public ChiTietPhieuXuatDTO(int maphieuxuat, int masp, int soluong, double dongia) {
@@ -47,6 +56,14 @@ public class ChiTietPhieuXuatDTO {
 
     public void setDongia(double dongia) {
         this.dongia = dongia;
+    }
+
+    public int getThoigianbaohanh() {
+        return thoigianbaohanh;
+    }
+
+    public void setThoigianbaohanh(int thoigianbaohanh) {
+        this.thoigianbaohanh = thoigianbaohanh;
     }
 
 }

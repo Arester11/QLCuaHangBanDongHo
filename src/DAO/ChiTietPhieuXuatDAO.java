@@ -24,7 +24,8 @@ public class ChiTietPhieuXuatDAO implements DAOinterface<ChiTietPhieuXuatDTO> {
                     int masp = rs.getInt("masp");
                     int soluong = rs.getInt("soluong");
                     int dongia = rs.getInt("dongia");
-                    result = new ChiTietPhieuXuatDTO(Integer.parseInt(maphieuxuat), masp, soluong, dongia);
+                    int thoigianbh = rs.getInt("thoigianbaohanh");
+                    result = new ChiTietPhieuXuatDTO(Integer.parseInt(maphieuxuat), masp, soluong, dongia, thoigianbh);
                 }
             }
         } catch (SQLException e) {
@@ -44,7 +45,8 @@ public class ChiTietPhieuXuatDAO implements DAOinterface<ChiTietPhieuXuatDTO> {
                 int masp = rs.getInt("masp");
                 int soluong = rs.getInt("soluong");
                 int dongia = rs.getInt("dongia");
-                ChiTietPhieuXuatDTO chiTiet = new ChiTietPhieuXuatDTO(maphieuxuat, masp, soluong, dongia);
+                int thoigianbaohanh = rs.getInt("thoigianbaohanh");
+                ChiTietPhieuXuatDTO chiTiet = new ChiTietPhieuXuatDTO(maphieuxuat, masp, soluong, dongia, thoigianbaohanh);
                 result.add(chiTiet);
             }
         } catch (SQLException e) {

@@ -44,12 +44,13 @@ public class PhieuXuatDAO implements DAOinterface<PhieuXuatDTO> {
         int result = 0;
         try {
             Connection con = (Connection) JDBC.getConnection();
-            String sql = " INSERT INTO `ctphieuxuat` (`maphieuxuat`, `masp`, `soluong`, `dongia`) VALUES (?,?,?,?)";
+            String sql = " INSERT INTO `ctphieuxuat` (`maphieuxuat`, `masp`, `soluong`, `dongia`, `thoigianbaohanh`) VALUES (?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, t.getMaphieuxuat());
             pst.setInt(2, t.getMasp());
             pst.setInt(3, t.getSoluong());
             pst.setDouble(4, t.getDongia());
+            pst.setInt(5, t.getThoigianbaohanh());
             result = pst.executeUpdate();
             JDBC.closeConnection(con);
         } catch (SQLException ex) {
@@ -143,7 +144,7 @@ public class PhieuXuatDAO implements DAOinterface<PhieuXuatDTO> {
         ArrayList<PhieuXuatDTO> result = new ArrayList<>();
         try {
             Connection con = (Connection) JDBC.getConnection();
-            String sql = " SELECT px.maphieuxuat, ctp.masp, ctp.soluong, ctp.dongia"
+            String sql = " SELECT px.maphieuxuat, ctp.masp, ctp.soluong, ctp.dongia, ctp.thoigianbaohanh"
                     + " FROM phieuxuat px"
                     + " JOIN ctphieuxuat ctp ON px.maphieuxuat = ctp.maphieuxuat";
             PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql);
@@ -153,8 +154,8 @@ public class PhieuXuatDAO implements DAOinterface<PhieuXuatDTO> {
                 int masp = rs.getInt("masp");
                 int sl = rs.getInt("soluong");
                 double dongia = rs.getDouble("dongia");
-               
-                PhieuXuatDTO phieuxuat = new PhieuXuatDTO(maphieu, masp, sl, dongia);
+                int thoigianbaohanh = rs.getInt("thoigianbaohanh");
+                PhieuXuatDTO phieuxuat = new PhieuXuatDTO(maphieu, masp, sl, dongia, thoigianbaohanh);
                 result.add(phieuxuat);
             }
             JDBC.closeConnection(con);
@@ -248,7 +249,7 @@ public class PhieuXuatDAO implements DAOinterface<PhieuXuatDTO> {
         int result = -1;
         try {
             Connection con = (Connection) JDBC.getConnection();
-            String sql = "SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'sieuthimini' AND TABLE_NAME   = 'phieuxuat'";
+            String sql = "SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'bandongho' AND TABLE_NAME   = 'phieuxuat'";
             PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql);
             ResultSet rs2 = pst.executeQuery(sql);
             if (!rs2.isBeforeFirst()) {

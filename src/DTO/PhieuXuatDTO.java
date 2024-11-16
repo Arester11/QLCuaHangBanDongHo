@@ -9,6 +9,7 @@ public class PhieuXuatDTO {
     private int manv;
     private int makh;
     private int magiamgia;
+    private int thoigianbaohanh;
     
     private String tenkhachhang;
     private String tennvnhap;
@@ -34,17 +35,16 @@ public class PhieuXuatDTO {
         this.tongtien = tongtien;
         this.tenkhachhang = tenkhachhang;
         this.tennvnhap = tennvnhap;
-       
     }
     
     // Constructor ct
 
-    public PhieuXuatDTO(int maphieuxuat, int masp, int soluong, double dongia) {
+    public PhieuXuatDTO(int maphieuxuat, int masp, int soluong, double dongia, int thoigianbaohanh) {
         this.maphieuxuat = maphieuxuat;
         this.soluong = soluong;
         this.masp = masp;
         this.dongia = dongia;
-        
+        this.thoigianbaohanh = thoigianbaohanh;
     }
     
     public int getMaphieuxuat() {
@@ -133,6 +133,14 @@ public class PhieuXuatDTO {
 
     public void setDongia(double dongia) {
         this.dongia = dongia;
+    }
+
+    public int getThoigianbaohanh() {
+        return thoigianbaohanh;
+    }
+
+    public void setThoigianbaohanh(int thoigianbaohanh) {
+        this.thoigianbaohanh = thoigianbaohanh;
     }
     
     
